@@ -1,0 +1,17 @@
+{
+  "events": [
+    {
+      "name": "contract_content_changed"
+    }
+  ],
+  "request": {
+    "method": "POST",
+    "url": "https://ci.example.com/builds",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "provider": "${pactbroker.providerName}"
+    }
+  }
+}

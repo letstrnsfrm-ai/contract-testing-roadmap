@@ -1,0 +1,9 @@
+node_modules/
+dist/
+pacts/
+.env
+*.log
+.DS_Store
+coverage/
+.pact_cache/
+jest-results/

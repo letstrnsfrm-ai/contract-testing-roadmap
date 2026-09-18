@@ -1,0 +1,31 @@
+name: Contract Testing CI
+on: [push, pull_request]
+jobs:
+  consumer-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: { node-version: 20 }
+      - run: npm install
+      - name: Run consumer pact tests
+        run: cd day-1-consumer-pact && npm install && npm test
+      - name: Publish pacts to broker
+        run: echo "Publish step here"
+        env:
+          PACT_BROKER_URL: ${{ secrets.PACT_BROKER_URL }}
+          PACT_BROKER_USERNAME: ${{ secrets.PACT_BROKER_USERNAME }}
+          PACT_BROKER_PASSWORD: ${{ secrets.PACT_BROKER_PASSWORD }}
+
+  provider-verification:
+    needs: consumer-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: { node-version: 20 }
+      - run: npm install
+      - name: Verify provider
+        run: cd day-2-provider-verification && npm install && npm test
+      - name: Can-I-Deploy gate
+        run: echo "Checking deployability..."

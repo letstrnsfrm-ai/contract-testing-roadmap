@@ -1,0 +1,14 @@
+{
+  "name": "contract-testing-day-3",
+  "version": "1.0.0",
+  "scripts": {
+    "publish": "ts-node src/publish.ts",
+    "broker:check": "ts-node src/broker-check.ts"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact-node": "^10.18.0",
+    "axios": "^1.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}
