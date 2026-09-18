@@ -2,10 +2,13 @@
   "name": "contract-testing-day-7",
   "version": "1.0.0",
   "scripts": {
-    "summary": "ts-node src/integration-summary.ts"
+    "summary": "ts-node src/integration-summary.ts",
+    "test": "jest"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.0"
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0",
+    "axios": "^1.7.0"
   }
 }
